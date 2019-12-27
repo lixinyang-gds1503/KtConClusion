@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MyIntelliJAndroidProject</string>
+    <string name="javaactivity">JavaActivity</string>
+    <string name="gojava">GoJava</string>
+</resources>

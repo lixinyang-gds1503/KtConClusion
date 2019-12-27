@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable name="MainData"
+                  type="cn.lxyhome.myintellijandroidproject.bingdata.MainData"/>
+        <variable name="MainViewModel"
+                  type="cn.lxyhome.myintellijandroidproject.model.MainViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".view.MainActivity">
+
+        <Button
+                android:id="@+id/btn_jump"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{MainData.buttontext}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{()->MainViewModel.GoJava()}"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintVertical_bias="0.9"/>
+        <ImageView
+                android:src="@mipmap/ic_launcher_round"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintVertical_bias="0.2"/>
+
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:text="@={MainData.password}"
+                android:hint="@{MainData.pashint}"
+                android:id="@+id/edit_password"
+                app:layout_constraintTop_toBottomOf="@+id/edit_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/btn_jump"
+                app:layout_constraintVertical_bias="0.1"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={MainData.name}"
+                android:hint="@{MainData.namehint}"
+                android:ems="10"
+                android:id="@+id/edit_name"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="@+id/edit_password"
+                app:layout_constraintEnd_toEndOf="@+id/edit_password"
+                android:layout_marginTop="60dp"
+                app:layout_constraintHorizontal_bias="1.0"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

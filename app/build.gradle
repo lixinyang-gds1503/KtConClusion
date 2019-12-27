@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'kotlin-noarg'
+
+apply plugin: 'kotlin-allopen'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "cn.lxyhome.myintellijandroidproject"
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    dexOptions {
+        javaMaxHeapSize "16g"
+        jumboMode = true
+    }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+    packagingOptions{
+        exclude 'META-INF/proguard/coroutines.pro'
+    }
+
+    dataBinding{
+        enabled true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2'
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+// alternatively, just ViewModel
+    implementation "android.arch.lifecycle:viewmodel:1.1.1"
+// alternatively, just LiveData
+    implementation "android.arch.lifecycle:livedata:1.1.1"
+
+    //LitePal
+    implementation 'org.litepal.android:kotlin:3.0.0'
+
+
+
+
+
+
+    /*testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'*/
+}
+
+
+noArg {
+    annotation("cn.lxyhome.myintellijandroidproject.entity.dataclass")//"aaa.bbb.ccc.ddd为模拟包名"
+}
+
+allOpen {
+    annotation("cn.lxyhome.myintellijandroidproject.entity.dataclass")
+}
